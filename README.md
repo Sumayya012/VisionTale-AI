@@ -1,4 +1,4 @@
-# ✨ VisionTale AI
+# 🖼️ VisionTale AI
 
 > Transform images into creative stories and listen to them as speech.
 
