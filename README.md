@@ -333,12 +333,13 @@ The application is currently available through the live Streamlit deployment.
 
 ## 👩‍💻 Author
 
-**Mohammed Sumayya**
+### Mohammed Sumayya
 
 B.Tech Computer Science & Engineering Student
-GenAI & Machine Learning | AI Application Development
 
-GitHub: [https://github.com/Sumayya012](https://github.com/Sumayya012)
+**GenAI & Machine Learning | AI Application Development**
+
+**GitHub:** https://github.com/Sumayya012
 
 ---
 
