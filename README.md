@@ -1,268 +1,358 @@
-# 🖼️ Image-to-Speech GenAI Tool
+# ✨ VisionTale AI
 
-An AI-powered Streamlit application that transforms an image into a short creative story and converts that story into speech.
+> Transform images into creative stories and listen to them as speech.
 
-The application combines **image understanding, generative AI, and text-to-speech** into a single workflow.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-VisionTale%20AI-6C63FF?style=for-the-badge)](https://visiontale-ai.streamlit.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Sumayya012-181717?style=for-the-badge&logo=github)](https://github.com/Sumayya012)
 
 ---
 
-## ✨ How It Works
+## 🚀 Live Demo
 
-The application follows a simple AI pipeline:
+Try the deployed application directly in your browser:
+
+### 👉 [https://visiontale-ai.streamlit.app/](https://visiontale-ai.streamlit.app/)
+
+No local installation is required to try the live application.
+
+---
+
+## 📌 About the Project
+
+**VisionTale AI** is a Streamlit-based Generative AI application that transforms an uploaded image into a short creative story and converts the generated story into speech.
+
+The application combines **image understanding, generative AI, and text-to-speech** into a single end-to-end workflow.
+
+### AI Pipeline
 
 **Image → Image Caption → Story Generation → Speech Generation**
 
-1. **Upload an Image**
-   - The user uploads a JPG image through the Streamlit interface.
-
-2. **Image Understanding**
-   - Salesforce BLIP analyzes the image and generates a textual description.
-
-3. **Story Generation**
-   - Google Gemini uses the generated description as context and creates a short creative story.
-
-4. **Text-to-Speech**
-   - The generated story is converted into natural-sounding speech using the Kokoro text-to-speech model.
-
-5. **Output**
-   - The application displays:
-     - Generated image description
-     - Generated short story
-     - Audio narration
+The project has been adapted and customized for current AI services, API integrations, application branding, and cloud deployment as a learning and portfolio project.
 
 ---
 
-## 🤖 AI Models Used
+## ✨ Key Features
+
+- 🖼️ Upload an image through the Streamlit interface
+- 👁️ Generate an image description using BLIP
+- ✍️ Generate a short creative story using Google Gemini
+- 🔊 Convert the generated story into speech using Kokoro TTS
+- 🌐 Access the application through a public Streamlit deployment
+- 🎨 Personalized application interface and branding
+- 🔐 API credentials kept outside the source code
+- 🤖 Multiple AI models working together in one pipeline
+
+---
+
+## 🧠 AI Models Used
 
 ### 1. Image Captioning — BLIP
 
 **Model:** `Salesforce/blip-image-captioning-base`
 
-BLIP is used to understand the uploaded image and generate a textual description.
+BLIP analyzes the uploaded image and generates a textual description of the detected scene.
 
 ### 2. Story Generation — Google Gemini
 
 **Model:** `gemini-3.5-flash-lite`
 
-Gemini takes the image description and generates a short creative story based on the detected scene.
+Gemini receives the generated image description and creates a short creative story based on the scene.
 
 ### 3. Text-to-Speech — Kokoro
 
 **Model:** `hexgrad/Kokoro-82M`
 
-Kokoro converts the generated story into speech.
+Kokoro converts the generated story into speech. The application accesses the model through the **Hugging Face Inference Client** using the `deepinfra` provider.
 
-The application accesses the model through the Hugging Face Inference Client using the `deepinfra` provider.
+---
+
+## 🔄 How It Works
+
+```text
+┌────────────────────┐
+│   User Uploads     │
+│      Image         │
+└─────────┬──────────┘
+          │
+          ▼
+┌─────────────────────────┐
+│      BLIP Model         │
+│   Image Captioning      │
+└──────────┬──────────────┘
+           │
+           ▼
+     Image Description
+           │
+           ▼
+┌─────────────────────────┐
+│     Google Gemini       │
+│    Story Generation     │
+└──────────┬──────────────┘
+           │
+           ▼
+       Short Story
+           │
+           ▼
+┌─────────────────────────┐
+│       Kokoro-82M        │
+│     Text-to-Speech      │
+└──────────┬──────────────┘
+           │
+           ▼
+       🔊 Audio Output
+```
 
 ---
 
 ## 🏗️ System Architecture
 
+The architecture represents the complete flow from image input to generated audio output.
+
+![System Architecture](img/system-design.drawio.png)
+
+---
+
+## 🛠️ Technologies Used
+
+**Application**
+- Python
+- Streamlit
+
+**Artificial Intelligence**
+- Hugging Face Transformers
+- Salesforce BLIP
+- Google Gemini API
+- Kokoro TTS
+
+**Libraries & APIs**
+- PyTorch
+- Torchvision
+- Hugging Face Hub
+- Google GenAI SDK
+- python-dotenv
+
+**Deployment & Version Control**
+- Git
+- GitHub
+- Streamlit Community Cloud
+
+---
+
+## 📁 Project Structure
+
 ```text
-                 ┌─────────────────┐
-                 │   User Uploads  │
-                 │      Image      │
-                 └────────┬────────┘
-                          │
-                          ▼
-              ┌───────────────────────┐
-              │      BLIP Model       │
-              │  Image Captioning     │
-              └───────────┬───────────┘
-                          │
-                          ▼
-                 Image Description
-                          │
-                          ▼
-              ┌───────────────────────┐
-              │    Google Gemini      │
-              │   Story Generation    │
-              └───────────┬───────────┘
-                          │
-                          ▼
-                    Short Story
-                          │
-                          ▼
-              ┌───────────────────────┐
-              │     Kokoro-82M        │
-              │    Text-to-Speech     │
-              └───────────┬───────────┘
-                          │
-                          ▼
-                  🔊 Audio Output
-🛠️ Technologies Used
-Python
-Streamlit
-PyTorch
-Hugging Face Transformers
-Hugging Face Inference Client
-Google Gemini API
-BLIP
-Kokoro TTS
-python-dotenv
-📁 Project Structure
-Image-to-Speech-GenAI-Tool-Using-LLM/
+VisionTale-AI/
+│
+├── img/
+│   ├── my_logo.png
+│   └── system-design.drawio.png
+│
+├── utils/
+│   └── custom.py
 │
 ├── app.py
 ├── requirements.txt
 ├── README.md
 ├── LICENSE
-├── .gitignore
-│
-├── img/
-│   ├── sumayya_logo.png
-│   └── ...
-│
-├── audio-img/
-│   ├── app-snapshot.jpg
-│   └── happy couple.jpg
-│
-├── utils/
-│   └── custom.py
-│
-├── nature.jpg
-└── storytelling.jpg
-⚙️ Local Setup
-1. Clone the repository
-git clone <YOUR-GITHUB-REPOSITORY-URL>
-cd Image-to-Speech-GenAI-Tool-Using-LLM
-2. Create a virtual environment
+└── .gitignore
+```
+
+---
+
+## ⚙️ Local Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Sumayya012/VisionTale-AI.git
+cd VisionTale-AI
+```
+
+### 2. Create a virtual environment
+
+```bash
 python -m venv .venv
-3. Activate the virtual environment
+```
 
-Windows PowerShell:
+### 3. Activate the virtual environment
 
+**Windows PowerShell**
+
+```powershell
 .\.venv\Scripts\Activate.ps1
-4. Install dependencies
-pip install -r requirements.txt
-5. Configure API keys
+```
 
-Create a .env file in the project root:
+### 4. Install dependencies
 
-GEMINI_API_KEY=your_gemini_api_key
-HUGGINGFACE_API_TOKEN=your_huggingface_token
+```bash
+python -m pip install -r requirements.txt
+```
 
-Important: Never upload your .env file or expose API keys publicly.
+### 5. Configure API keys
 
-6. Run the application
+Create a `.env` file in the project root:
+
+```env
+GEMINI_API_KEY="your_gemini_api_key"
+HUGGINGFACE_API_TOKEN="your_huggingface_token"
+```
+
+**Important:** Never upload `.env` or expose your API keys publicly. The `.env` file is excluded from Git using `.gitignore`.
+
+### 6. Run the application
+
+```bash
 python -m streamlit run app.py
+```
 
 The application will open in your browser.
 
-🔐 Environment Variables
-Variable	Purpose
-GEMINI_API_KEY	Used for Gemini story generation
-HUGGINGFACE_API_TOKEN	Used for Hugging Face model inference
+---
 
-For cloud deployment, these keys should be configured using the platform's secrets management rather than committed to GitHub. Streamlit Community Cloud supports adding secrets through the deployment settings.
+## 🔐 Environment Variables
 
-🎯 Key Features
-🖼️ Image upload through Streamlit
-👁️ AI-based image understanding
-✍️ Automatic short-story generation
-🔊 AI-powered text-to-speech
-⚡ Simple interactive web interface
-🔐 API keys kept outside the source code
-🤖 Multiple AI models working together in a single pipeline
-📸 Application
+| Variable | Purpose |
+|---|---|
+| `GEMINI_API_KEY` | Used for Gemini story generation |
+| `HUGGINGFACE_API_TOKEN` | Used for Hugging Face model inference |
 
-The application provides three main outputs:
+For the deployed Streamlit application, these credentials are configured through **Streamlit Secrets** rather than being stored in the GitHub repository.
 
-1. Image Scenario
+---
 
-The BLIP model generates a description of the uploaded image.
+## 📸 Application Output
 
-2. Generated Story
+VisionTale AI produces three main outputs from an uploaded image:
 
-Gemini transforms the description into a short creative story.
+**1. Image Scenario**
+The BLIP model analyzes the image and generates a textual description.
 
-3. Audio Narration
+**2. Generated Story**
+Google Gemini transforms the image description into a short creative story.
 
-The generated story is converted into speech and played directly in the application.
+**3. Audio Narration**
+The generated story is converted into speech using the Kokoro text-to-speech model.
 
-🚀 Deployment
+---
 
-This project can be deployed using Streamlit Community Cloud.
+## 🎯 Example Workflow
 
-The repository should contain the application's requirements.txt and the required project files. Streamlit Community Cloud installs the Python dependencies from the dependency file and allows API keys to be configured through its Secrets settings.
+```text
+📷 Uploaded Image
+        │
+        ▼
+🤖 BLIP Image Model
+        │
+        ▼
+📝 Image Description
+        │
+        ▼
+✨ Google Gemini
+        │
+        ▼
+📖 Short Story
+        │
+        ▼
+🔊 Kokoro TTS
+        │
+        ▼
+🎧 Audio Output
+```
 
-Typical deployment flow:
+---
 
+## 🌐 Deployment
+
+VisionTale AI is deployed using **Streamlit Community Cloud**.
+
+### Deployment Flow
+
+```text
 GitHub Repository
-        │
-        ▼
+       │
+       ▼
 Streamlit Community Cloud
-        │
-        ├── Install dependencies
-        ├── Configure secrets
-        └── Run app.py
-        │
-        ▼
-   Live Streamlit App
+       │
+       ├── Install dependencies
+       ├── Configure secrets
+       └── Run app.py
+       │
+       ▼
+Live Streamlit Application
+```
 
-After deployment, Streamlit provides a shareable streamlit.app URL.
+### Live Application
 
-📚 What I Learned
+👉 [https://visiontale-ai.streamlit.app/](https://visiontale-ai.streamlit.app/)
 
-Through this project, I explored:
+---
 
-Image captioning using BLIP
-Working with pretrained Hugging Face models
-Generative AI APIs
-Prompt-based story generation
-Text-to-speech models
-Integrating multiple AI models into one application
-Streamlit application development
-Environment variables and API-key security
-Deploying AI applications
-🔄 AI Pipeline
-              INPUT
-                │
-                ▼
-          📷 Uploaded Image
-                │
-                ▼
-        🤖 BLIP Image Model
-                │
-                ▼
-       📝 Image Description
-                │
-                ▼
-       ✨ Google Gemini
-                │
-                ▼
-          📖 Short Story
-                │
-                ▼
-          🔊 Kokoro TTS
-                │
-                ▼
-          🎧 Audio Output
-📌 Project Status
+## 📚 What I Learned
 
-Working locally: ✅
+Through this project, I explored and practiced:
 
-The complete pipeline has been tested locally:
+- Image captioning using BLIP
+- Working with pretrained Hugging Face models
+- Generative AI API integration
+- Prompt-based story generation
+- Text-to-speech inference
+- Integrating multiple AI models into one application
+- Streamlit application development
+- Environment variables and API-key security
+- Git and GitHub workflow
+- Cloud deployment using Streamlit Community Cloud
+- Building an end-to-end AI application pipeline
 
-Image → BLIP → Gemini → Kokoro → Audio
+---
 
-Cloud deployment can be configured after pushing the project to GitHub.
+## 📌 Project Status
 
-🙏 Credits
+**Status:** ✅ Deployed and Working
 
-This project is based on the original open-source project:
+The complete pipeline has been tested successfully:
 
-Image-to-Speech GenAI Tool Using LLM
-Original repository by Gurpreet Kaur Jethra
+```text
+Image
+  ↓
+BLIP
+  ↓
+Image Description
+  ↓
+Gemini
+  ↓
+Short Story
+  ↓
+Kokoro TTS
+  ↓
+Audio
+```
 
-Original repository:
+The application is currently available through the live Streamlit deployment.
 
-https://github.com/GURPREETKAURJETHRA/Image-to-Speech-GenAI-Tool-Using-LLM
+---
 
-This version has been adapted for current AI services, updated API integrations, and personalized UI/branding for learning and portfolio purposes.
+## 👩‍💻 Author
 
-The original project's license is retained in the repository.
+**Mohammed Sumayya**
 
-👩‍💻 Author
+B.Tech Computer Science & Engineering Student
+GenAI & Machine Learning | AI Application Development
 
-Mohammed Sumayya
+GitHub: [https://github.com/Sumayya012](https://github.com/Sumayya012)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🔎 Project Background
+
+This repository is an adapted and customized version of an existing open-source Image-to-Speech GenAI project.
+
+The adaptation includes updated AI service integrations, current model/API usage, personalized UI and branding, dependency updates, and Streamlit Community Cloud deployment.
+
+The original project's MIT license and required license notice are retained in the repository.
