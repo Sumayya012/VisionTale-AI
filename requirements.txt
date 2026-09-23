@@ -1,0 +1,7 @@
+streamlit
+transformers
+torch
+torchvision
+python-dotenv
+huggingface-hub
+google-genai
