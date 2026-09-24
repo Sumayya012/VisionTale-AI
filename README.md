@@ -331,29 +331,38 @@ The application is currently available through the live Streamlit deployment.
 
 ---
 
+## ⚠️ Limitations
+
+- The application currently generates stories from a single uploaded image at a time.
+- Story quality depends on how accurately the image caption describes the image.
+- Generated stories are AI-written and may contain inaccuracies or unexpected content.
+- A Gemini API key and an internet connection are required for story generation.
+- Audio generation depends on the availability and performance of the text-to-speech model.
+- The application is designed as an image-to-story-to-speech tool rather than a general-purpose chatbot.
+
+---
+
+## 🔮 Future Improvements
+
+- Add support for multiple story styles and genres.
+- Add language selection for stories and audio output.
+- Add multiple voice options for the generated audio.
+- Allow users to edit the generated story before audio conversion.
+- Allow users to download the generated story and audio together.
+- Add support for uploading multiple images to create one story.
+- Migrate to newer model and API integrations as the project evolves.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
 ## 👩‍💻 Author
 
-### Mohammed Sumayya
+**Mohammed Sumayya**
 
-B.Tech Computer Science & Engineering Student
-
-**GenAI & Machine Learning | AI Application Development**
-
-**GitHub:** https://github.com/Sumayya012
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
-
----
-
-## 🔎 Project Background
-
-This repository is an adapted and customized version of an existing open-source Image-to-Speech GenAI project.
-
-The adaptation includes updated AI service integrations, current model/API usage, personalized UI and branding, dependency updates, and Streamlit Community Cloud deployment.
-
-The original project's MIT license and required license notice are retained in the repository.
+- GitHub: https://github.com/Sumayya012
+- LinkedIn: https://www.linkedin.com/in/mohammed-sumayya/
